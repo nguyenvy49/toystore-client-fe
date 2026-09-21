@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import SingleOrder from "./SingleOrder";
 import { OrderService } from "@/services/orderServices";
+import { HubConnectionBuilder } from "@microsoft/signalr";
+import envConfig from "@/config/envConfig";
 
 const Orders = () => {
   const [orders, setOrders] = useState<any[]>([]);
@@ -17,7 +19,28 @@ const Orders = () => {
   }
 
   useEffect(() => {
-    fecthData()
+    fecthData();
+
+    const baseUrl = envConfig.NEXT_PUBLIC_API_URL || "https://cua-hang-do-choi-be.onrender.com";
+    const hubUrl = `${baseUrl.replace(/\/$/, "")}/hubs/order`;
+
+    const connection = new HubConnectionBuilder()
+      .withUrl(hubUrl)
+      .withAutomaticReconnect()
+      .build();
+
+    connection.start()
+      .then(() => console.log("⚡ SignalR connected to OrderHub in Client FE"))
+      .catch((err) => console.warn("SignalR connection error:", err));
+
+    connection.on("ReceiveOrderStatusUpdate", (data) => {
+      console.log("🔔 Realtime OrderStatusUpdate received via SignalR in Client FE:", data);
+      fecthData();
+    });
+
+    return () => {
+      connection.stop();
+    };
   }, []);
 
   return (
