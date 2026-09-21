@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import OrderActions from "./OrderActions";
 import OrderModal from "./OrderModal";
 import { formatCurrency, formatDateTime } from "@/utils/format";
+import { getOrderStatusText, getOrderStatusBadgeClass } from "@/utils/ghnStatusHelper";
 
 const SingleOrder = ({ orderItem, smallView }: any) => {
   const [showDetails, setShowDetails] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const status = [ "Chờ xác nhận","Đã xác nhận","Đang giao","Hoàn thành","Đã hủy"]
-  console.log(orderItem);
   const toggleDetails = () => {
     setShowDetails(!showDetails);
   };
@@ -29,23 +28,14 @@ const SingleOrder = ({ orderItem, smallView }: any) => {
             <p className="text-custom-sm text-dark">{formatDateTime(orderItem.orderDate)}</p>
           </div>
 
-          <div className="min-w-[128px]">
+          <div className="min-w-[180px]">
             <p
-              className={`inline-block text-custom-sm  py-0.5 rounded-[30px] capitalize 
-                ${orderItem.orderStatus == 0
-                  ? "text-yellow bg-yellow-light-4"
-                  : orderItem.orderStatus == 1
-                    ? "text-purple bg-purple-light-6"
-                    : orderItem.orderStatus == 2
-                      ? "text-blue bg-blue-light-6"
-                      : orderItem.orderStatus == 3
-                        ? "text-green bg-green-light-6"
-                        : orderItem.orderStatus == 4
-                          ? "text-red bg-red-light-6"
-                          : "Unknown Status"
-                }`}
+              className={`inline-block text-custom-sm py-0.5 px-3 rounded-[30px] capitalize font-medium ${getOrderStatusBadgeClass(
+                orderItem.orderStatus,
+                orderItem.ghnStatus
+              )}`}
             >
-              {status[orderItem.orderStatus]}
+              {getOrderStatusText(orderItem.orderStatus, orderItem.ghnStatus)}
             </p>
           </div>
 
@@ -76,20 +66,12 @@ const SingleOrder = ({ orderItem, smallView }: any) => {
               <p className="text-custom-sm text-dark">
                 <span className="font-bold pr-2">Status:</span>{" "}
                 <span
-                  className={`inline-block text-custom-sm  py-0.5 px-2.5 rounded-[30px] capitalize ${orderItem.orderStatus === 0
-                      ? "text-yellow bg-yellow-light-4"
-                      : orderItem.orderStatus === 1
-                        ? "text-purple bg-purple-light-6"
-                        : orderItem.orderStatus === 2
-                          ? "text-blue bg-blue-light-6"
-                          : orderItem.orderStatus === 3
-                            ? "text-green bg-green-light-6"
-                            : orderItem.orderStatus === 4
-                              ? "text-red bg-red-light-6"
-                              : "Unknown Status"
-                    }`}
+                  className={`inline-block text-custom-sm py-0.5 px-2.5 rounded-[30px] capitalize ${getOrderStatusBadgeClass(
+                    orderItem.orderStatus,
+                    orderItem.ghnStatus
+                  )}`}
                 >
-                  {orderItem.orderStatus}
+                  {getOrderStatusText(orderItem.orderStatus, orderItem.ghnStatus)}
                 </span>
               </p>
             </div>
