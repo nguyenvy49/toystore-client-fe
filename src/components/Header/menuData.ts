@@ -51,7 +51,7 @@ export const menuData: Menu[] = [
         path: '/my-account',
       }, {
         id: 69,
-        title: 'Cẩm nang',
+        title: 'Tin tức',
         newTab: false,
         path: '/blogs/blog-grid-with-sidebar',
       }
@@ -59,7 +59,7 @@ export const menuData: Menu[] = [
   },
   {
     id: 7,
-    title: 'Cẩm nang',
+    title: 'Tin tức',
     newTab: false,
     path: '/blogs/blog-grid-with-sidebar',
   },

@@ -7,70 +7,90 @@ import ProductItem from "@/components/Common/ProductItem";
 import { ProductService } from "@/services/productServices";
 
 const NewArrival = () => {
-
-
   const [listProduct, setlistProduct] = useState<any[]>([]);
   const [toTalProduct, settoTalProduct] = useState<any>(0);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const fecthData = async () => {
     try {
-      const getlistProduct = await ProductService.getProduct('/api/Product/client?Sortby=createdOn&SortAsc=false');
+      setLoading(true);
+      const getlistProduct = await ProductService.getProduct(
+        "/api/Product/client?Sortby=createdOn&SortAsc=false"
+      );
       setlistProduct(getlistProduct?.result?.items || []);
       settoTalProduct(getlistProduct?.result?.totalCount || 0);
     } catch (error) {
       console.error("Error fetching new arrivals:", error);
       setlistProduct([]);
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     fecthData();
   }, []);
 
   return (
-    <section className="overflow-hidden pt-15">
+    <section className="overflow-hidden pt-12 pb-16 bg-gradient-to-b from-slate-50/50 to-white">
       <div className="max-w-[1170px] w-full mx-auto px-4 sm:px-8 xl:px-0">
-        {/* <!-- section title --> */}
-        <div className="mb-7 flex items-center justify-between">
+        {/* Section Header */}
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-slate-100 pb-5">
           <div>
-            <span className="flex items-center gap-2.5 font-medium text-dark mb-1.5">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3.11826 15.4622C4.11794 16.6668 5.97853 16.6668 9.69971 16.6668H10.3007C14.0219 16.6668 15.8825 16.6668 16.8821 15.4622M3.11826 15.4622C2.11857 14.2577 2.46146 12.429 3.14723 8.77153C3.63491 6.17055 3.87875 4.87006 4.8045 4.10175M3.11826 15.4622C3.11826 15.4622 3.11826 15.4622 3.11826 15.4622ZM16.8821 15.4622C17.8818 14.2577 17.5389 12.429 16.8532 8.77153C16.3655 6.17055 16.1216 4.87006 15.1959 4.10175M16.8821 15.4622C16.8821 15.4622 16.8821 15.4622 16.8821 15.4622ZM15.1959 4.10175C14.2701 3.33345 12.947 3.33345 10.3007 3.33345H9.69971C7.0534 3.33345 5.73025 3.33345 4.8045 4.10175M15.1959 4.10175C15.1959 4.10175 15.1959 4.10175 15.1959 4.10175ZM4.8045 4.10175C4.8045 4.10175 4.8045 4.10175 4.8045 4.10175Z"
-                  stroke="#3C50E0"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M7.64258 6.66678C7.98578 7.63778 8.91181 8.33345 10.0003 8.33345C11.0888 8.33345 12.0149 7.63778 12.3581 6.66678"
-                  stroke="#3C50E0"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-              Sản phẩm mới
-            </span>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200/60 uppercase tracking-wider">
+                <svg className="w-3.5 h-3.5 text-indigo-600" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+                </svg>
+                Mẫu Mới Cập Nhật
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              Sản Phẩm Mới Nhất
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              Khám phá đồ chơi giáo dục và giải trí vừa lên kệ tại ToysWorld
+            </p>
           </div>
 
           <Link
             href="/shop-with-sidebar"
-            className="inline-flex font-medium text-custom-sm py-2.5 px-7 rounded-md border-gray-3 border bg-gray-1 text-dark ease-out duration-200 hover:bg-dark hover:text-white hover:border-transparent"
+            className="group inline-flex items-center gap-2 font-semibold text-xs sm:text-sm py-2.5 px-6 rounded-full border border-slate-200 bg-white text-slate-800 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-300 shadow-sm active:scale-95"
           >
-            Xem tất cả
+            <span>Xem tất cả ({toTalProduct})</span>
+            <svg
+              className="w-4 h-4 text-slate-400 group-hover:text-white group-hover:translate-x-1 transition-all"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-7.5 gap-y-9">
-          {/* <!-- New Arrivals item --> */}
-          {Array.isArray(listProduct) && listProduct.map((item, key) => (
-            <ProductItem item={item} key={key} />
-          ))}
-        </div>
+        {/* Product Grid */}
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7.5">
+            {[1, 2, 3, 4].map((n) => (
+              <div key={n} className="bg-slate-100 animate-pulse rounded-2xl h-[360px]" />
+            ))}
+          </div>
+        ) : listProduct.length === 0 ? (
+          <div className="py-12 text-center text-slate-400 text-sm">
+            Chưa có sản phẩm mới nào.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-7.5 gap-y-9">
+            {listProduct.map((item, key) => (
+              <ProductItem item={item} key={key} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

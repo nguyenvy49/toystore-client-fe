@@ -4,28 +4,28 @@ export interface GhnStatusInfo {
 }
 
 export const ghnStatusMap: Record<string, GhnStatusInfo> = {
-  ready_to_pick: { label: "Sẵn sàng lấy hàng (GHN)", badgeClass: "text-yellow bg-yellow-light-4" },
-  picking: { label: "Đang lấy hàng (GHN)", badgeClass: "text-blue bg-blue-light-6" },
-  money_collect_picking: { label: "Đang thu tiền người gửi (GHN)", badgeClass: "text-blue bg-blue-light-6" },
-  picked: { label: "Đã lấy hàng (GHN)", badgeClass: "text-purple bg-purple-light-6" },
-  storing: { label: "Hàng đang ở kho (GHN)", badgeClass: "text-purple bg-purple-light-6" },
-  transporting: { label: "Đang luân chuyển (GHN)", badgeClass: "text-purple bg-purple-light-6" },
-  sorting: { label: "Đang phân loại (GHN)", badgeClass: "text-purple bg-purple-light-6" },
-  delivering: { label: "Đang giao hàng (GHN)", badgeClass: "text-blue bg-blue-light-6" },
-  money_collect_delivering: { label: "Đang giao & Thu tiền COD (GHN)", badgeClass: "text-blue bg-blue-light-6" },
-  delivered: { label: "Đã giao hàng thành công (GHN)", badgeClass: "text-green bg-green-light-6" },
-  delivery_fail: { label: "Giao hàng thất bại (GHN)", badgeClass: "text-red bg-red-light-6" },
-  waiting_to_return: { label: "Chờ trả hàng (GHN)", badgeClass: "text-yellow bg-yellow-light-4" },
-  return: { label: "Trả hàng (GHN)", badgeClass: "text-yellow bg-yellow-light-4" },
-  return_transporting: { label: "Đang luân chuyển trả hàng (GHN)", badgeClass: "text-yellow bg-yellow-light-4" },
-  return_sorting: { label: "Đang phân loại trả hàng (GHN)", badgeClass: "text-yellow bg-yellow-light-4" },
-  returning: { label: "Đang trả hàng (GHN)", badgeClass: "text-yellow bg-yellow-light-4" },
-  return_fail: { label: "Trả hàng thất bại (GHN)", badgeClass: "text-red bg-red-light-6" },
-  returned: { label: "Đã trả hàng (GHN)", badgeClass: "text-red bg-red-light-6" },
-  exception: { label: "Hàng ngoại lệ / Sự cố (GHN)", badgeClass: "text-red bg-red-light-6" },
-  damage: { label: "Hàng hư hỏng (GHN)", badgeClass: "text-red bg-red-light-6" },
-  lost: { label: "Hàng thất lạc (GHN)", badgeClass: "text-red bg-red-light-6" },
-  cancel: { label: "Đã hủy đơn hàng (GHN)", badgeClass: "text-red bg-red-light-6" },
+  ready_to_pick: { label: "Sẵn sàng lấy hàng", badgeClass: "bg-amber-100 text-amber-800 border border-amber-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  picking: { label: "Đang lấy hàng", badgeClass: "bg-blue-100 text-blue-800 border border-blue-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  money_collect_picking: { label: "Đang thu tiền người gửi", badgeClass: "bg-blue-100 text-blue-800 border border-blue-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  picked: { label: "Đã lấy hàng", badgeClass: "bg-indigo-100 text-indigo-800 border border-indigo-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  storing: { label: "Hàng đang ở kho", badgeClass: "bg-purple-100 text-purple-800 border border-purple-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  transporting: { label: "Đang luân chuyển", badgeClass: "bg-purple-100 text-purple-800 border border-purple-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  sorting: { label: "Đang phân loại", badgeClass: "bg-purple-100 text-purple-800 border border-purple-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  delivering: { label: "Đang giao hàng", badgeClass: "bg-sky-100 text-sky-800 border border-sky-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  money_collect_delivering: { label: "Đang giao & Thu tiền COD", badgeClass: "bg-sky-100 text-sky-800 border border-sky-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  delivered: { label: "Đã giao hàng thành công", badgeClass: "bg-emerald-100 text-emerald-800 border border-emerald-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  delivery_fail: { label: "Giao hàng thất bại", badgeClass: "bg-red-100 text-red-800 border border-red-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  waiting_to_return: { label: "Chờ trả hàng", badgeClass: "bg-orange-100 text-orange-800 border border-orange-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  return: { label: "Trả hàng", badgeClass: "bg-orange-100 text-orange-800 border border-orange-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  return_transporting: { label: "Đang luân chuyển trả hàng", badgeClass: "bg-orange-100 text-orange-800 border border-orange-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  return_sorting: { label: "Đang phân loại trả hàng", badgeClass: "bg-orange-100 text-orange-800 border border-orange-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  returning: { label: "Đang trả hàng", badgeClass: "bg-orange-100 text-orange-800 border border-orange-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  return_fail: { label: "Trả hàng thất bại", badgeClass: "bg-red-100 text-red-800 border border-red-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  returned: { label: "Đã trả hàng", badgeClass: "bg-gray-100 text-gray-800 border border-gray-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  exception: { label: "Hàng ngoại lệ / Sự cố", badgeClass: "bg-red-100 text-red-800 border border-red-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  damage: { label: "Hàng hư hỏng", badgeClass: "bg-red-100 text-red-800 border border-red-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  lost: { label: "Hàng thất lạc", badgeClass: "bg-red-100 text-red-800 border border-red-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
+  cancel: { label: "Đã hủy đơn hàng", badgeClass: "bg-red-100 text-red-800 border border-red-300 px-2.5 py-0.5 rounded-full text-xs font-semibold" },
 };
 
 const defaultStatuses = [
@@ -48,11 +48,11 @@ export function getOrderStatusBadgeClass(orderStatus: number, ghnStatus?: string
     return ghnStatusMap[ghnStatus.toLowerCase()].badgeClass;
   }
   const defaultClasses = [
-    "text-yellow bg-yellow-light-4",
-    "text-purple bg-purple-light-6",
-    "text-blue bg-blue-light-6",
-    "text-green bg-green-light-6",
-    "text-red bg-red-light-6",
+    "bg-amber-100 text-amber-800 border border-amber-300 px-2.5 py-0.5 rounded-full text-xs font-semibold",
+    "bg-blue-100 text-blue-800 border border-blue-300 px-2.5 py-0.5 rounded-full text-xs font-semibold",
+    "bg-purple-100 text-purple-800 border border-purple-300 px-2.5 py-0.5 rounded-full text-xs font-semibold",
+    "bg-emerald-100 text-emerald-800 border border-emerald-300 px-2.5 py-0.5 rounded-full text-xs font-semibold",
+    "bg-red-100 text-red-800 border border-red-300 px-2.5 py-0.5 rounded-full text-xs font-semibold",
   ];
-  return defaultClasses[orderStatus] || "text-dark bg-gray-2";
+  return defaultClasses[orderStatus] || "bg-gray-100 text-gray-800 border border-gray-300 px-2.5 py-0.5 rounded-full text-xs font-semibold";
 }

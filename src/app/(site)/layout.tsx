@@ -15,6 +15,7 @@ import ScrollToTop from "@/components/Common/ScrollToTop";
 import PreLoader from "@/components/Common/PreLoader";
 import { AppProvider } from "../context/AppContext";
 import { ToastContainer } from "react-toastify";
+import AiChatModal from "@/components/AiChat/AiChatModal";
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext', 'vietnamese'], // Thêm "vietnamese" để hỗ trợ tiếng Việt
@@ -56,6 +57,7 @@ export default function RootLayout({
               </ReduxProvider>
             </AppProvider>
             <ScrollToTop />
+            <AiChatModal />
             <Footer />
           </>
         )}

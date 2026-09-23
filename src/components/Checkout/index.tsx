@@ -100,7 +100,7 @@ const Checkout = () => {
       if (res?.isSuccess !== false) {
         dispatch(removeAllItemsFromCart());
         alert("Đặt hàng thành công!");
-        router.push("/my-account");
+        router.push("/my-account?tab=orders");
       } else {
         setErrorMsg(res?.message || "Đặt hàng thất bại, vui lòng thử lại!");
       }

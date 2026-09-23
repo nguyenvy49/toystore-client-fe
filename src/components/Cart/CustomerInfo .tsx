@@ -96,7 +96,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = ({ ghnData, setGhnData }) => {
           theme: "light",
           transition: Slide,
         });
-        router.push("/my-account");
+        router.push("/my-account?tab=orders");
       } else {
         toast.error(res?.message || "Đặt hàng thất bại!", {
           position: "top-center",
